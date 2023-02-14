@@ -1,0 +1,31 @@
+---
+import Base from "@layouts/Base.astro";
+import Post from "@layouts/partials/Post.astro";
+import { getSinglePage } from "@lib/contentParser.astro";
+import { sortByDate } from "@lib/utils/sortFunctions";
+import { markdownify } from "@lib/utils/textConverter";
+import { getEntryBySlug } from "astro:content";
+
+const homepage = await getEntryBySlug("homepage", "index");
+const { banner } = homepage.data;
+const posts = await getSinglePage("posts");
+const sortPostByDate = sortByDate(posts);
+const showPost = 4;
+---
+
+<Base>
+  <div class="section">
+    <div class="container">
+      <h1 set:text={markdownify(banner.title)} class="h2 mb-8 text-center" />
+      <div class="row">
+        {
+          sortPostByDate.slice(0, showPost).map((post) => (
+            <div class="col-12 mb-8 sm:col-6">
+              <Post post={post} />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Base>
