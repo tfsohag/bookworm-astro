@@ -50,16 +50,16 @@ const { theme_switcher, default_theme } = config.settings;
     darkMode = false;
   }
   if (darkMode) {
-    document.body.classList.toggle("dark");
+    document.documentElement.classList.toggle("dark");
   }
   document.addEventListener("DOMContentLoaded", () => {
     var themeSwitch = document.querySelectorAll("[data-theme-switcher]");
     [].forEach.call(themeSwitch, function (ts) {
       ts.addEventListener("click", () => {
-        document.body.classList.toggle("dark");
+        document.documentElement.classList.toggle("dark");
         localStorage.setItem(
           "theme",
-          document.body.classList.contains("dark") ? "dark" : "light"
+          document.documentElement.classList.contains("dark") ? "dark" : "light"
         );
       });
     });

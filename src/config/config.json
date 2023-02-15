@@ -12,7 +12,7 @@
   },
 
   "settings": {
-    "theme_switcher": false,
+    "theme_switcher": true,
     "default_theme": "system",
     "pagination": 5,
     "summary_length": 200
