@@ -12,6 +12,8 @@
   },
 
   "settings": {
+    "theme_switcher": false,
+    "default_theme": "system",
     "pagination": 5,
     "summary_length": 200
   },
