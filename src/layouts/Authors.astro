@@ -24,7 +24,7 @@ const { authors } = Astro.props;
             {author.data.title}
           </a>
         </h3>
-        <p set:text={markdownify(author.body.slice(0, 120))} />
+        <p set:html={markdownify(author.body.slice(0, 120))} />
       </div>
     ))
   }

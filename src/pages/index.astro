@@ -16,7 +16,7 @@ const showPost = 4;
 <Base>
   <div class="section">
     <div class="container">
-      <h1 set:text={markdownify(banner.title)} class="h2 mb-8 text-center" />
+      <h1 set:html={markdownify(banner.title)} class="h2 mb-8 text-center" />
       <div class="row">
         {
           sortPostByDate.slice(0, showPost).map((post) => (
