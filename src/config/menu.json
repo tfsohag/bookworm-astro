@@ -18,6 +18,9 @@
       "hasChildren": true,
       "children": [
         {
+          "name": "Posts",
+          "url": "/posts"
+        },{
           "name": "Authors",
           "url": "/authors"
         },
