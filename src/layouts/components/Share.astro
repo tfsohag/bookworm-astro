@@ -17,6 +17,7 @@ const { title, description, slug, className } = Astro.props;
       aria-label="facebook share button"
       href={`https://facebook.com/sharer/sharer.php?u=${base_url}/${slug}`}
       target="_blank"
+      class="hover:text-primary transition-all p-2 inline-block"
       rel="noreferrer noopener"
     >
       <IoLogoFacebook />
@@ -27,6 +28,7 @@ const { title, description, slug, className } = Astro.props;
       aria-label="twitter share button"
       href={`https://twitter.com/intent/tweet/?text=${title}&amp;url=${base_url}/${slug}`}
       target="_blank"
+      class="hover:text-primary transition-all p-2 inline-block"
       rel="noreferrer noopener"
     >
       <IoLogoTwitter />
@@ -37,6 +39,7 @@ const { title, description, slug, className } = Astro.props;
       aria-label="linkedin share button"
       href={`https://www.linkedin.com/shareArticle?mini=true&url=${base_url}/${slug}&title=${title}&summary=${description}&source=${base_url}`}
       target="_blank"
+      class="hover:text-primary transition-all p-2 inline-block"
       rel="noreferrer noopener"
     >
       <IoLogoLinkedin />
@@ -47,6 +50,7 @@ const { title, description, slug, className } = Astro.props;
       aria-label="pinterest share button"
       href={`https://pinterest.com/pin/create/button/?url=${base_url}/${slug}&media=&description=${description}`}
       target="_blank"
+      class="hover:text-primary transition-all p-2 inline-block"
       rel="noreferrer noopener"
     >
       <IoLogoPinterest />

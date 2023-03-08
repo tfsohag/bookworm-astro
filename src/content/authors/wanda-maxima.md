@@ -1,7 +1,7 @@
 ---
 title: Wanda Maxima
 email: wandamaxima@gmail.com
-image: ""
+image: /images/authors/john-doe.jpg
 description: this is meta description
 social:
   facebook: https://www.facebook.com/

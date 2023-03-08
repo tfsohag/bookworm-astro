@@ -1,31 +1,35 @@
 ---
 import Base from "@layouts/Base.astro";
+import Pagination from "@layouts/components/Pagination.astro";
 import Post from "@layouts/partials/Post.astro";
 import { getSinglePage } from "@lib/contentParser.astro";
 import { sortByDate } from "@lib/utils/sortFunctions";
-import { markdownify } from "@lib/utils/textConverter";
 import { getEntryBySlug } from "astro:content";
+import config from '@config/config.json';
 
 const homepage = await getEntryBySlug("homepage", "index");
-const { banner } = homepage.data;
 const posts = await getSinglePage("posts");
 const sortPostByDate = sortByDate(posts);
-const showPost = 4;
+const totalPages = Math.ceil(posts.length / config.settings.pagination);
+const currentPosts = sortPostByDate.slice(0, config.settings.pagination);
 ---
 
 <Base>
   <div class="section">
     <div class="container">
-      <h1 set:html={markdownify(banner.title)} class="h2 mb-8 text-center" />
-      <div class="row">
+      <div class="row -mt-10 lg:-mt-16">
+        <div class="col-12 mt-10 lg:mt-16">
+            <Post post={posts[0]} />
+        </div>
         {
-          sortPostByDate.slice(0, showPost).map((post) => (
-            <div class="col-12 mb-8 sm:col-6">
+          currentPosts.slice(0, -1).map((post) => (
+            <div class="col-12 mt-10 lg:mt-16 sm:col-6">
               <Post post={post} />
             </div>
           ))
         }
       </div>
+      <Pagination currentPage={1} totalPages={totalPages} />
     </div>
   </div>
 </Base>

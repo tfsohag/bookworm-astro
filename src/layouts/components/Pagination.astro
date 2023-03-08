@@ -13,7 +13,7 @@ for (let i = 1; i <= totalPages; i++) {
 
 {
   totalPages > 1 && (
-    <nav class="mb-4 flex justify-center -space-x-px" aria-label="Pagination">
+    <nav class="mb-4 flex justify-center space-x-2.5 mt-10 lg:mt-16" aria-label="Pagination">
       {/* previous */}
       {hasPrevPage ? (
         <a
@@ -22,7 +22,7 @@ for (let i = 1; i <= totalPages; i++) {
               ? `${section ? "/" + section : "/"}`
               : `${section ? "/" + section : ""}/page/${currentPage - 1}`
           }
-          class="border border-primary px-2 py-2 text-text"
+          class="border border-primary rounded-md px-2 py-2 text-dark"
         >
           <span class="sr-only">Previous</span>
           <svg
@@ -40,7 +40,7 @@ for (let i = 1; i <= totalPages; i++) {
           </svg>
         </a>
       ) : (
-        <span class="border border-primary px-2 py-2 text-text">
+        <span class="border border-primary rounded-md px-2 py-2 text-dark">
           <span class="sr-only">Previous</span>
           <svg
             class="mt-1 h-5 w-5"
@@ -63,7 +63,7 @@ for (let i = 1; i <= totalPages; i++) {
         pagination === currentPage ? (
           <span
             aria-current="page"
-            class={`border border-primary bg-primary px-4 py-2 text-white`}
+            class={`border border-primary rounded-md bg-primary px-4 py-2 text-white`}
           >
             {pagination}
           </span>
@@ -75,7 +75,7 @@ for (let i = 1; i <= totalPages; i++) {
                 : `${section ? "/" + section : ""}/page/${pagination}`
             }
             aria-current="page"
-            class={`border border-primary px-4 py-2 text-text`}
+            class={`border border-primary rounded-md px-4 py-2 text-dark`}
           >
             {pagination}
           </a>
@@ -86,7 +86,7 @@ for (let i = 1; i <= totalPages; i++) {
       {hasNextPage ? (
         <a
           href={`${section ? "/" + section : ""}/page/${currentPage + 1}`}
-          class="border border-primary px-2 py-2 text-text"
+          class="border border-primary rounded-md px-2 py-2 text-dark"
         >
           <span class="sr-only">Next</span>
           <svg
@@ -104,7 +104,7 @@ for (let i = 1; i <= totalPages; i++) {
           </svg>
         </a>
       ) : (
-        <span class="border border-primary px-2 py-2 text-text">
+        <span class="border border-primary rounded-md px-2 py-2 text-dark">
           <span class="sr-only">Next</span>
           <svg
             class="mt-1 h-5 w-5"

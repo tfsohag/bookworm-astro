@@ -79,13 +79,13 @@ export default function SearchBar({ searchList }: Props) {
       />
 
       {inputVal.length > 1 && (
-        <div className="mt-8">
+        <h1 className="h2 mb-8 mt-8 text-center">
           Found {searchResults?.length}
           {searchResults?.length && searchResults?.length === 1
             ? " result"
             : " results"}{" "}
-          for '{inputVal}'
-        </div>
+          for <span className="text-primary">{inputVal}</span>
+        </h1>
       )}
 
       <div className="row">

@@ -1,0 +1,42 @@
+---
+import Base from "@layouts/Base.astro";
+import { getSinglePage } from "@lib/contentParser.astro";
+import {settings} from '@config/config.json';
+import Post from "@layouts/partials/Post.astro";
+import Pagination from "@layouts/components/Pagination.astro";
+import { sortByDate } from "@lib/utils/sortFunctions";
+
+export async function getStaticPaths () {
+    const posts = await getSinglePage('posts');
+    const paths = posts.map((page, index) => ({params: {slug: index + 1}}))
+    return paths
+}
+const {slug} = Astro.params
+const posts = await getSinglePage('posts');
+const totalPages = Math.ceil(posts.length / settings.pagination);
+const currentPage = slug && !isNaN(Number(slug)) ? Number(slug) : 1;
+const lastPostIndex = currentPage * settings.pagination;
+const firstPostIndex = lastPostIndex - settings.pagination;
+const sortedPosts = sortByDate(posts);
+const currentPosts = sortedPosts.slice(firstPostIndex, lastPostIndex);
+
+---
+
+<Base>
+    <section class="section">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                  
+                </div>
+                {currentPosts.map((post) => (
+                    <div class="col-12 mb-8 sm:col-6">
+                      <Post post={post} />
+                    </div>
+                  ))
+                }
+            </div>
+            <Pagination currentPage={currentPage} totalPages={totalPages} />
+        </div>
+    </section>
+</Base>

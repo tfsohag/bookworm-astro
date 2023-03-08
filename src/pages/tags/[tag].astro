@@ -1,0 +1,37 @@
+---
+import Base from "@layouts/Base.astro";
+import Post from "@layouts/partials/Post.astro";
+import { getSinglePage } from "@lib/contentParser.astro";
+import { getTaxonomy } from "@lib/taxonomyParser.astro";
+import taxonomyFilter from "@lib/utils/taxonomyFilter";
+export async function getStaticPaths() {
+    const tags = await getTaxonomy('posts', 'tags');
+    const paths = tags.map(tag => ({params: {tag: tag}}));
+    return paths
+}
+const posts = await getSinglePage('posts');
+const {tag} = Astro.params;
+const postsByTags = await taxonomyFilter(posts, 'tags', tag)
+---
+
+<Base title={tag}>
+    <div class="section">
+      <div class="container">
+        <h1 class="h2 mb-8 text-center">
+          Showing posts from <span class="text-primary">{tag}</span> tag
+        </h1>
+        <div class="row -mt-10 lg:-mt-16">
+            <div class="col-12 mt-10 lg:mt-16">
+                <Post post={posts[0]} />
+            </div>
+            {
+              postsByTags.slice(0, -1).map((post) => (
+                <div class="col-12 mt-10 lg:mt-16 sm:col-6">
+                  <Post post={post} />
+                </div>
+              ))
+            }
+          </div>
+      </div>
+    </div>
+  </Base>

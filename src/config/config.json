@@ -1,20 +1,20 @@
 {
   "site": {
-    "title": "Astro Boilerplate",
+    "title": "Bookworm Astro | Personal Blog Theme",
     "base_url": "https://example.com",
     "base_path": "/",
     "trailing_slash": false,
     "favicon": "/images/favicon.png",
-    "logo": "/images/logo.svg",
-    "logo_width": "130",
-    "logo_height": "40",
+    "logo": "/images/logo.png",
+    "logo_width": "200",
+    "logo_height": "34",
     "logo_text": "Astroplate"
   },
 
   "settings": {
     "theme_switcher": true,
     "default_theme": "system",
-    "pagination": 2,
+    "pagination": 3,
     "summary_length": 200
   },
 

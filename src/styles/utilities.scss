@@ -5,3 +5,8 @@ strong {
 code {
   @apply after:border-none;
 }
+
+.shadow {
+  box-shadow: 0 10px 30px rgb(22 28 45 / 10%);
+}
+

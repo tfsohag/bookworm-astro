@@ -1,6 +1,5 @@
 ---
 import Logo from "@components/Logo.astro";
-import ThemeSwitcher from "@components/ThemeSwitcher.astro";
 import menu from "@config/menu.json";
 import { IoSearch } from "react-icons/io5/index.js";
 
@@ -17,8 +16,10 @@ export interface NavigationLink {
 }
 
 const { main }: { main: NavigationLink[] } = menu;
----
 
+
+---
+<div class="header-block"></div>
 <header class={`header`}>
   <nav class="navbar container">
     <!-- logo -->
@@ -88,7 +89,6 @@ const { main }: { main: NavigationLink[] } = menu;
       }
     </ul>
     <div class="order-1 ml-auto flex items-center md:order-2 md:ml-0">
-      <ThemeSwitcher />
       <a
         class="cursor-pointer p-2 text-xl text-dark hover:text-primary"
         href="search"
@@ -98,3 +98,29 @@ const { main }: { main: NavigationLink[] } = menu;
     </div>
   </nav>
 </header>
+
+<!-- handle sticky header -->
+<script type="text/javascript">
+  const header = document.querySelector('.header');
+  const headerBlock = document.querySelector('.header-block');
+  const headerHeight = header.clientHeight;
+
+  //reset height
+  function resetHeight () {
+    headerBlock.style.height = `${headerHeight}px`;
+  }
+
+  const handleScroll = () => {
+    let scrollY = window.scrollY;
+    if(scrollY > 0 ) {
+      header.classList.add('header-sticky');
+      headerBlock.style.height = `${header.clientHeight}px`;
+    } else {
+      header.classList.remove('header-sticky')
+      resetHeight();
+    }
+
+  }
+  handleScroll();
+  window.addEventListener('scroll', handleScroll)
+</script>
